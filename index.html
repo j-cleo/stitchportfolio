@@ -1,16 +1,25 @@
 <!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jovie Cleofas' Portfolio">
+  <meta property="og:url" content="https://j-cleo.github.io/stitchportfolio/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1699891730676-037bed3c1bed?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <meta property="og:description" content="Jovie Cleofas' Portfolio website showcasing his background, experience, and work">
+  <link rel="icon" type="image/x-icon" href="./favicon.png">
+  <title>Jovie Cleofas | cleo.dev - Full-Stack Web Developer</title>
 
-<html class="scroll-smooth" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Jovie Cleofas | cleo.dev - Full-Stack Web Developer</title>
-<!-- Tailwind CSS v3 with Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts for Typography & Serif Stylings -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,500;1,600&amp;display=swap" rel="stylesheet"/>
-<script>
+  <!-- Tailwind CSS v3 with Plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Google Fonts for Typography & Serif Stylings -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,500;1,600&amp;display=swap" rel="stylesheet"/>
+
+  <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -30,13 +39,34 @@
       }
     }
   </script>
-<!-- Custom Styles for Glowing Effects and Component Precision -->
-<style data-purpose="custom-theme-glows">
+
+  <!-- Custom Styles for Glowing Effects, Focus States and High Contrast -->
+  <style data-purpose="custom-theme-glows">
     body {
       background-color: #030712;
       color: #f1f5f9;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
+    }
+
+    /* Skip Link for Keyboard Navigation */
+    .skip-to-content {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 100;
+      padding: 0.75rem 1.25rem;
+      background: #4f46e5;
+      color: #ffffff;
+      font-weight: 700;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-to-content:focus {
+      top: 1rem;
+      outline: 3px solid #ffffff;
+      outline-offset: 2px;
     }
 
     /* Ambient atmospheric background glow */
@@ -71,6 +101,15 @@
       transform: translateY(-1px);
     }
 
+    /* Accessible focus ring indicators across all interactive elements */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid #818cf8 !important;
+      outline-offset: 3px !important;
+    }
+
     /* Tech icons styled SVG placeholders */
     .icon-box {
       width: 38px;
@@ -80,378 +119,506 @@
       justify-content: center;
       border-radius: 8px;
     }
+
+    /* Screen reader only utility class */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Respect Reduced Motion Preferences */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-indigo-500 selection:text-white relative min-h-screen">
-<div class="hero-glow"></div>
-<!-- BEGIN: MainNavbar -->
-<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#030712]/90 border-b border-white/5">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<!-- Brand Logo / Badge -->
-<a class="flex items-center gap-2 group cursor-pointer" data-purpose="brand-logo" href="#home">
-<div class="px-2.5 py-1 rounded-md bg-[#0f172a] border border-blue-900/60 text-xs font-semibold tracking-wider text-blue-400 group-hover:border-indigo-500 transition-colors">
+  <!-- Skip navigation link for keyboard accessibility -->
+  <a href="#main-content" class="skip-to-content">
+    Skip to main content
+  </a>
+
+  <!-- Purely decorative visual glow -->
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <!-- BEGIN: MainNavbar -->
+  <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#030712]/90 border-b border-white/5" role="banner">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Brand Logo / Badge -->
+      <a class="flex items-center gap-2 group cursor-pointer focus-visible:rounded-lg" data-purpose="brand-logo" href="#home" aria-label="cleo.dev - Return to homepage">
+        <div class="px-2.5 py-1 rounded-md bg-[#0f172a] border border-blue-900/60 text-xs font-semibold tracking-wider text-blue-400 group-hover:border-indigo-500 transition-colors" aria-hidden="true">
           cleo
         </div>
-<span class="text-xl font-bold tracking-tight text-white group-hover:text-blue-200 transition-colors">cleo.dev</span>
-</a>
-<!-- Navigation Links -->
-<nav class="flex items-center space-x-8 text-sm font-medium text-slate-300" data-purpose="desktop-nav">
-<a class="hover:text-white transition-colors" href="#home">Home</a>
-<a class="hover:text-white transition-colors" href="#projects">Projects</a>
-<a class="hover:text-white transition-colors" href="#tools">Tools</a>
-<a class="hover:text-white transition-colors" href="#contact">Contact</a>
-</nav>
-</div>
-</header>
-<!-- END: MainNavbar -->
-<main>
-<!-- BEGIN: HeroSection -->
-<section class="relative pt-10 pb-24 px-6 max-w-7xl mx-auto" data-purpose="hero-about-intro" id="home">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
-<!-- Left Side: Available status + Name + Bio + Action Buttons -->
-<div class="lg:col-span-6 space-y-6">
-<!-- Status pill badge -->
-<div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0a1122] border border-[#1b2b48] text-xs font-medium text-blue-300 shadow-sm">
-<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Available for new projects
+        <span class="text-xl font-bold tracking-tight text-white group-hover:text-blue-200 transition-colors">cleo.dev</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="flex items-center space-x-6 sm:space-x-8 text-sm font-medium text-slate-300" data-purpose="desktop-nav" aria-label="Main Navigation">
+        <a class="hover:text-white transition-colors focus-visible:rounded" href="#home">Home</a>
+        <a class="hover:text-white transition-colors focus-visible:rounded" href="#projects">Projects</a>
+        <a class="hover:text-white transition-colors focus-visible:rounded" href="#tools">Tools</a>
+        <a class="hover:text-white transition-colors focus-visible:rounded" href="#contact">Contact</a>
+        <a href="./JovieCleofasCV.pdf" download="JovieCleofasResume.pdf" class="px-4 py-2 bg-indigo-700 hover:bg-indigo-600 text-white rounded font-medium transition-colors focus-visible:rounded" aria-label="Download Jovie Cleofas' Resume (PDF)">
+          Download Resume
+        </a>
+      </nav>
+    </div>
+  </header>
+  <!-- END: MainNavbar -->
+
+  <main id="main-content" tabindex="-1">
+    <!-- BEGIN: HeroSection -->
+    <section class="relative pt-10 pb-24 px-6 max-w-7xl mx-auto" data-purpose="hero-about-intro" id="home" aria-labelledby="hero-name-heading">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
+        <!-- Left Side: Available status + Name + Bio + Action Buttons -->
+        <div class="lg:col-span-6 space-y-6">
+          <!-- Status pill badge -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0a1122] border border-[#1b2b48] text-xs font-medium text-blue-300 shadow-sm" role="status" aria-label="Work status: Available for new projects">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+            <span>Available for new projects</span>
           </div>
-<!-- Main headings -->
-<div>
-<h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-white mb-2">
+
+          <!-- Main headings -->
+          <div>
+            <h1 id="hero-name-heading" class="text-5xl sm:text-6xl font-extrabold tracking-tight text-white mb-2">
               Jovie Cleofas
             </h1>
-<p class="font-serifAccent italic text-2xl sm:text-3xl text-indigo-400 tracking-wide font-normal">
+            <p class="font-serifAccent italic text-2xl sm:text-3xl text-indigo-400 tracking-wide font-normal">
               Full-Stack Web Developer
             </p>
-</div>
-<!-- About Me Card -->
-<div class="card-glass rounded-2xl p-6 sm:p-7 shadow-xl shadow-black/40">
-<h2 class="text-xs uppercase tracking-widest text-slate-300 font-bold mb-3">ABOUT ME</h2>
-<p class="text-slate-300 text-sm leading-relaxed tracking-normal font-normal text-justify">
+          </div>
+
+          <!-- About Me Card -->
+          <article class="card-glass rounded-2xl p-6 sm:p-7 shadow-xl shadow-black/40" aria-labelledby="about-me-heading">
+            <h2 id="about-me-heading" class="text-xs uppercase tracking-widest text-slate-300 font-bold mb-3">ABOUT ME</h2>
+            <p class="text-slate-300 text-sm leading-relaxed tracking-normal font-normal text-justify">
               A full-stack web developer specializing in React and Tailwind. Has a keen eye for detail, and styling. Focuses on creating visually-appealing user interfaces and reliable user experience to provide the best quality output possible. Is a responsible and reliable team member who collaborates and cooperates to get the job done. Takes initiative whenever necessary and keeps up with his schedule and deadlines. Overall, a developer you can trust to deliver.
             </p>
-</div>
-<!-- Call to Action Buttons -->
-<div class="flex flex-wrap items-center gap-4 pt-2">
-<a class="btn-glow inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase" href="#contact">
-              LET'S WORK TOGETHER <span class="text-sm font-bold">→</span>
-</a>
-<a class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-[#070e1c] hover:bg-[#111a31] border border-[#202f4d] text-slate-200 font-semibold text-xs tracking-wider uppercase transition-all duration-200" href="#projects">
+          </article>
+
+          <!-- Call to Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a class="btn-glow inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase focus-visible:rounded-lg" href="#contact" aria-label="Let's work together - Jump to contact section">
+              <span>LET'S WORK TOGETHER</span>
+              <span class="text-sm font-bold" aria-hidden="true">→</span>
+            </a>
+            <a class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-[#070e1c] hover:bg-[#111a31] border border-[#202f4d] text-slate-200 font-semibold text-xs tracking-wider uppercase transition-all duration-200 focus-visible:rounded-lg" href="#projects" aria-label="Explore work - Jump to projects section">
               EXPLORE WORK
             </a>
-</div>
-</div>
-<!-- Middle Column: Stats Cards -->
-<div class="lg:col-span-3 space-y-4">
-<!-- Stat 1: Projects Done -->
-<div class="card-glass rounded-2xl p-6 flex flex-col justify-center min-h-[120px]">
-<span class="text-xs uppercase font-bold tracking-wider text-slate-400"># OF PROJECTS DONE</span>
-<span class="text-5xl font-serifAccent italic font-semibold text-white mt-1">20</span>
-</div>
-<!-- Stat 2: Years Experience -->
-<div class="card-glass rounded-2xl p-6 flex flex-col justify-center min-h-[120px]">
-<span class="text-xs uppercase font-bold tracking-wider text-slate-400">YRS OF EXPERIENCE</span>
-<span class="text-5xl font-serifAccent italic font-semibold text-white mt-1">1 year</span>
-</div>
-<!-- Stat 3: Main Tech -->
-<div class="card-glass rounded-2xl p-6 flex flex-col justify-center min-h-[120px]">
-<span class="text-xs uppercase font-bold tracking-wider text-slate-400">MAIN TECH</span>
-<span class="text-5xl font-serifAccent italic font-semibold text-white mt-1">React</span>
-</div>
-</div>
-<!-- Right Side: Circular Profile Picture -->
-<div class="lg:col-span-3 flex justify-center items-center">
-<div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full p-1 bg-gradient-to-tr from-slate-700/60 via-slate-600/40 to-slate-800/40 shadow-2xl overflow-hidden ring-4 ring-slate-800/40">
-<!-- Cutout matching graduation portrait in IMAGE_5 -->
-<img alt="Jovie Cleofas Profile Portrait" class="w-full h-full object-cover rounded-full object-[85%_center] scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQnAy7InLLeoAg70q31QUOjJ_QyaR7t71MGqs6lxBY7mwqymei7kMHXDQgWpa8OqGpU8LChGIYLM70acYiI7zrNW80zzJIEzI1uZv6cCNny9GBwIYNn8lndPOBB1j5EnT0CGi10y-M3pdV0-w1vKvxZBX8ZdWN7VpSdtCSc2UK2-IZTKCTnFD3nzZVjcXiUCu9vLAPpoIK85_Kp7tcQSBhuUFZBaM4SOMQZXL1b6PkQCUhCtLk8n7CQYBISpeybODRM0A"/>
-</div>
-</div>
-</div>
-</section>
-<!-- END: HeroSection -->
-<!-- BEGIN: ProjectsSection -->
-<section class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-900/60" data-purpose="featured-projects" id="projects">
-<!-- Section Header Pill & Subtitle -->
-<div class="flex flex-col items-center text-center mb-12">
-<div class="px-7 py-2 rounded-full bg-[#0a1222] border border-[#1b2b48] text-white font-bold text-lg tracking-wide shadow-inner">
-          Projects
+          </div>
         </div>
-<p class="text-sm text-slate-400 mt-4 max-w-2xl font-light">
+
+        <!-- Middle Column: Stats Cards (Accessible List of Metrics) -->
+        <div class="lg:col-span-3 space-y-4" role="region" aria-label="Key professional statistics">
+          <ul class="space-y-4 list-none p-0 m-0">
+            <!-- Stat 1: Projects Done -->
+            <li>
+              <div class="card-glass rounded-2xl p-6 flex flex-col justify-center min-h-[120px]">
+                <span class="text-xs uppercase font-bold tracking-wider text-slate-400" id="stat-projects-label"># OF PROJECTS DONE</span>
+                <span class="text-5xl font-serifAccent italic font-semibold text-white mt-1" aria-labelledby="stat-projects-label">20</span>
+              </div>
+            </li>
+            <!-- Stat 2: Years Experience -->
+            <li>
+              <div class="card-glass rounded-2xl p-6 flex flex-col justify-center min-h-[120px]">
+                <span class="text-xs uppercase font-bold tracking-wider text-slate-400" id="stat-exp-label">YRS OF EXPERIENCE</span>
+                <span class="text-5xl font-serifAccent italic font-semibold text-white mt-1" aria-labelledby="stat-exp-label">1 year</span>
+              </div>
+            </li>
+            <!-- Stat 3: Main Tech -->
+            <li>
+              <div class="card-glass rounded-2xl p-6 flex flex-col justify-center min-h-[120px]">
+                <span class="text-xs uppercase font-bold tracking-wider text-slate-400" id="stat-tech-label">MAIN TECH</span>
+                <span class="text-5xl font-serifAccent italic font-semibold text-white mt-1" aria-labelledby="stat-tech-label">React</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Side: Circular Profile Picture -->
+        <div class="lg:col-span-3 flex justify-center items-center">
+          <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full p-1 bg-gradient-to-tr from-slate-700/60 via-slate-600/40 to-slate-800/40 shadow-2xl overflow-hidden ring-4 ring-slate-800/40">
+            <img alt="Portrait photograph of Jovie Cleofas in graduation attire" class="w-full h-full object-cover rounded-full object-[85%_center] scale-110" src="./my-image.jpg"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: HeroSection -->
+
+    <!-- BEGIN: ProjectsSection -->
+    <section class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-900/60" data-purpose="featured-projects" id="projects" aria-labelledby="projects-section-title">
+      <!-- Section Header Pill & Subtitle -->
+      <div class="flex flex-col items-center text-center mb-12">
+        <h2 id="projects-section-title" class="px-7 py-2 rounded-full bg-[#0a1222] border border-[#1b2b48] text-white font-bold text-lg tracking-wide shadow-inner">
+          Projects
+        </h2>
+        <p class="text-sm text-slate-400 mt-4 max-w-2xl font-light">
           A selection of featured applications, open-source projects, and design systems
         </p>
-</div>
-<div class="space-y-6">
-<!-- Top Big Card: E-Commerce App -->
-<article class="card-glass rounded-2xl p-4 sm:p-5 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch group hover:border-[#273a5e] transition-all">
-<!-- Image preview side -->
-<div class="lg:col-span-6 rounded-xl overflow-hidden bg-slate-950 border border-slate-800/60 relative aspect-video lg:aspect-auto">
-<img alt="E-Commerce App Analytics Dashboard" class="w-full h-full object-cover object-[15%_18%] filter brightness-95 group-hover:scale-102 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACtJ3Zp8BnqYaspGxXsp25208DnplZ7OiuLJlcAEVru_IaUyssFbW-tyoYLJIfrsaUTd2SFV4AQR3iWouA62TZV7P8yStfotE2pOqaPcpxVK2jyih3v4UY5P7otUk9TH5ShCg7xBKbXJob_f4uHa5mGUWRXP-jMYWVl8AdgSiegXlflcIZAu8NKBIB1mj14x0IcQ60B1dcjpPAM_Y4VeW0nrPI_xxgklUXxTkpHmcB9Hfbw3JOiWQhxZhavLuSDFyo0tI"/>
-</div>
-<!-- Project Details side -->
-<div class="lg:col-span-6 flex flex-col justify-between p-2 sm:p-4">
-<div>
-<div class="flex items-center justify-between mb-3">
-<h3 class="text-2xl font-bold text-white tracking-tight">E-Commerce App</h3>
-<span class="px-2.5 py-1 text-xs font-semibold rounded bg-[#0b1426] border border-slate-800 text-slate-400">2026</span>
-</div>
-<p class="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
+      </div>
+
+      <div class="space-y-6">
+        <!-- Top Big Card: E-Commerce App -->
+        <article class="card-glass rounded-2xl p-4 sm:p-5 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch group hover:border-[#273a5e] transition-all" aria-labelledby="project-ecommerce-title">
+          <!-- Image preview side -->
+          <div class="lg:col-span-6 rounded-xl overflow-hidden bg-slate-950 border border-slate-800/60 relative aspect-video lg:aspect-auto">
+            <img alt="Screenshot preview of E-Commerce App analytics dashboard showing real-time metrics and charts" class="w-full h-full object-cover object-[15%_18%] filter brightness-95 group-hover:scale-102 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACtJ3Zp8BnqYaspGxXsp25208DnplZ7OiuLJlcAEVru_IaUyssFbW-tyoYLJIfrsaUTd2SFV4AQR3iWouA62TZV7P8yStfotE2pOqaPcpxVK2jyih3v4UY5P7otUk9TH5ShCg7xBKbXJob_f4uHa5mGUWRXP-jMYWVl8AdgSiegXlflcIZAu8NKBIB1mj14x0IcQ60B1dcjpPAM_Y4VeW0nrPI_xxgklUXxTkpHmcB9Hfbw3JOiWQhxZhavLuSDFyo0tI"/>
+          </div>
+
+          <!-- Project Details side -->
+          <div class="lg:col-span-6 flex flex-col justify-between p-2 sm:p-4">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h3 id="project-ecommerce-title" class="text-2xl font-bold text-white tracking-tight">E-Commerce App</h3>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded bg-[#0b1426] border border-slate-800 text-slate-400" aria-label="Release year: 2026">2026</span>
+              </div>
+              <p class="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
                 MERN E-Commerce Platform. The platform features dynamic product catalog with filtering and sorting, real-time search, seamless cart updates, secure checkout, and a comprehensive admin dashboard with real-time analytics and user management capabilities.
               </p>
-</div>
-<div class="flex items-center justify-between pt-6 border-t border-slate-800/60">
-<div class="flex items-center gap-2">
-<span class="px-3 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">HTML</span>
-<span class="px-3 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">CSS</span>
-<span class="px-3 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">JavaScript</span>
-</div>
-<a class="px-4 py-1.5 rounded-lg bg-[#0b1325] border border-slate-700/80 hover:border-slate-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors" href="#projects">
-                Visit <span class="text-sm leading-none">↗</span>
-</a>
-</div>
-</div>
-</article>
-<!-- Bottom Grid: Two Parallel Project Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Card 1: Airline Booking System -->
-<article class="card-glass rounded-2xl p-4 sm:p-5 flex flex-col justify-between group hover:border-[#273a5e] transition-all">
-<div>
-<div class="w-full h-48 rounded-xl overflow-hidden bg-slate-950 border border-slate-800/60 mb-5 relative">
-<img alt="Airline Booking System Conceptual UI" class="w-full h-full object-cover object-[15%_78%] group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmipLTnqxU-fv8BwzQ0S6B_PolBZD9jKLoSALAplKN34nrPsEmuk6gjw4jC5z5lxhsK4-6GaAjmlZfL8M4oY2EAq6EdTxkf6Xmrqm0eTBOa3cTImHHZ1hJstAb0lekxwhLAp7EaRj86xeZNINegFH5jtZvloijsnRfd4JEzcgpEMF267_-k6iMKV2GSxEU_p3hyR5xIS-yIVAhKrCNOJHQGQOjz4OOMC9_D4YxlSe2taj54ZQSw30XT9jpBEIGWddumA8"/>
-</div>
-<div class="flex items-center justify-between mb-2">
-<h3 class="text-xl font-bold text-white">Airline Booking System</h3>
-<span class="px-2 py-0.5 text-xs font-medium rounded bg-[#0b1426] border border-slate-800 text-slate-400">2026</span>
-</div>
-<p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+            </div>
+
+            <div class="flex items-center justify-between pt-6 border-t border-slate-800/60">
+              <ul class="flex items-center gap-2 list-none p-0 m-0" aria-label="Technologies used in E-Commerce App">
+                <li class="px-3 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">HTML</li>
+                <li class="px-3 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">CSS</li>
+                <li class="px-3 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">JavaScript</li>
+              </ul>
+              <a class="px-4 py-1.5 rounded-lg bg-[#0b1325] border border-slate-700/80 hover:border-slate-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors focus-visible:rounded" href="#projects" aria-label="Visit E-Commerce App project live preview">
+                <span>Visit</span>
+                <span class="text-sm leading-none" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bottom Grid: Two Parallel Project Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Card 1: Airline Booking System -->
+          <article class="card-glass rounded-2xl p-4 sm:p-5 flex flex-col justify-between group hover:border-[#273a5e] transition-all" aria-labelledby="project-airline-title">
+            <div>
+              <div class="w-full h-48 rounded-xl overflow-hidden bg-slate-950 border border-slate-800/60 mb-5 relative">
+                <img alt="Visual mockup interface of Airline Booking System flight search and ticket booking" class="w-full h-full object-cover object-[15%_78%] group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmipLTnqxU-fv8BwzQ0S6B_PolBZD9jKLoSALAplKN34nrPsEmuk6gjw4jC5z5lxhsK4-6GaAjmlZfL8M4oY2EAq6EdTxkf6Xmrqm0eTBOa3cTImHHZ1hJstAb0lekxwhLAp7EaRj86xeZNINegFH5jtZvloijsnRfd4JEzcgpEMF267_-k6iMKV2GSxEU_p3hyR5xIS-yIVAhKrCNOJHQGQOjz4OOMC9_D4YxlSe2taj54ZQSw30XT9jpBEIGWddumA8"/>
+              </div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 id="project-airline-title" class="text-xl font-bold text-white">Airline Booking System</h3>
+                <span class="px-2 py-0.5 text-xs font-medium rounded bg-[#0b1426] border border-slate-800 text-slate-400" aria-label="Release year: 2026">2026</span>
+              </div>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
                 Side Project: Conceptual design showcasing an intuitive UI for flight search, seat selection, and booking confirmation, focusing on user experience and workflow efficiency.
               </p>
-</div>
-<div class="flex items-center justify-between pt-4 border-t border-slate-800/60">
-<div class="flex items-center gap-2">
-<span class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">HTML</span>
-<span class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">CSS</span>
-<span class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">JavaScript</span>
-</div>
-<a class="px-3.5 py-1.5 rounded-lg bg-[#0b1325] border border-slate-700/80 hover:border-slate-500 text-white text-xs font-semibold flex items-center gap-1 transition-colors" href="#projects">
-                Visit <span class="text-sm leading-none">↗</span>
-</a>
-</div>
-</article>
-<!-- Card 2: Airline Booking System Prototype -->
-<article class="card-glass rounded-2xl p-4 sm:p-5 flex flex-col justify-between group hover:border-[#273a5e] transition-all">
-<div>
-<div class="w-full h-48 rounded-xl overflow-hidden bg-slate-950 border border-slate-800/60 mb-5 relative">
-<img alt="Airline Booking System Prototype Team Coding" class="w-full h-full object-cover object-[80%_78%] group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe3gIk3q2mkGMz9UePPCooBwhaw6al6_RdkeJsoiTip5dF9VzD7vBaK-Aks1kBr83quvB3dAWFB2XvZku4_y78EcSCMihjVjWCjKzwI8A_hzCYeGUHHiloZEAA3kS42kTmUVX8nUu2yJSNryJ956p2sflmCeO8HnU0bmvUa08924rOt_NP6Tf9GFnlcTpU7HCesjqhw_VlkKQEFOJQTD9687e_Ihq_2HvTnG7cSX7ffKQDTlYgXR-AaRG9U-2ckRdDRSg"/>
-</div>
-<div class="flex items-center justify-between mb-2">
-<h3 class="text-xl font-bold text-white">Airline Booking System Prototype</h3>
-<span class="px-2 py-0.5 text-xs font-medium rounded bg-[#0b1426] border border-slate-800 text-slate-400">2026</span>
-</div>
-<p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-slate-800/60">
+              <ul class="flex items-center gap-2 list-none p-0 m-0" aria-label="Technologies used in Airline Booking System">
+                <li class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">HTML</li>
+                <li class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">CSS</li>
+                <li class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">JavaScript</li>
+              </ul>
+              <a class="px-3.5 py-1.5 rounded-lg bg-[#0b1325] border border-slate-700/80 hover:border-slate-500 text-white text-xs font-semibold flex items-center gap-1 transition-colors focus-visible:rounded" href="#projects" aria-label="Visit Airline Booking System project">
+                <span>Visit</span>
+                <span class="text-sm leading-none" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: Airline Booking System Prototype -->
+          <article class="card-glass rounded-2xl p-4 sm:p-5 flex flex-col justify-between group hover:border-[#273a5e] transition-all" aria-labelledby="project-airline-proto-title">
+            <div>
+              <div class="w-full h-48 rounded-xl overflow-hidden bg-slate-950 border border-slate-800/60 mb-5 relative">
+                <img alt="Development team collaborating on code for the Airline Booking System Prototype" class="w-full h-full object-cover object-[80%_78%] group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe3gIk3q2mkGMz9UePPCooBwhaw6al6_RdkeJsoiTip5dF9VzD7vBaK-Aks1kBr83quvB3dAWFB2XvZku4_y78EcSCMihjVjWCjKzwI8A_hzCYeGUHHiloZEAA3kS42kTmUVX8nUu2yJSNryJ956p2sflmCeO8HnU0bmvUa08924rOt_NP6Tf9GFnlcTpU7HCesjqhw_VlkKQEFOJQTD9687e_Ihq_2HvTnG7cSX7ffKQDTlYgXR-AaRG9U-2ckRdDRSg"/>
+              </div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 id="project-airline-proto-title" class="text-xl font-bold text-white">Airline Booking System Prototype</h3>
+                <span class="px-2 py-0.5 text-xs font-medium rounded bg-[#0b1426] border border-slate-800 text-slate-400" aria-label="Release year: 2026">2026</span>
+              </div>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
                 Side Project: Interactive prototype simulating end-to-end airline booking functionalities, including flight search, reservation, payment processing, and real-time ticket management.
               </p>
-</div>
-<div class="flex items-center justify-between pt-4 border-t border-slate-800/60">
-<div class="flex items-center gap-2">
-<span class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">HTML</span>
-<span class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">CSS</span>
-<span class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">JavaScript</span>
-</div>
-<a class="px-3.5 py-1.5 rounded-lg bg-[#0b1325] border border-slate-700/80 hover:border-slate-500 text-white text-xs font-semibold flex items-center gap-1 transition-colors" href="#projects">
-                Visit <span class="text-sm leading-none">↗</span>
-</a>
-</div>
-</article>
-</div>
-</div>
-</section>
-<!-- END: ProjectsSection -->
-<!-- BEGIN: ToolsSection -->
-<section class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-900/60" data-purpose="tools-tech-stack" id="tools">
-<!-- Section Header Pill & Subtitle -->
-<div class="flex flex-col items-center text-center mb-16">
-<div class="px-7 py-2 rounded-full bg-[#0a1222] border border-[#1b2b48] text-white font-bold text-lg tracking-wide shadow-inner">
-          Tools
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-slate-800/60">
+              <ul class="flex items-center gap-2 list-none p-0 m-0" aria-label="Technologies used in Airline Booking System Prototype">
+                <li class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">HTML</li>
+                <li class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">CSS</li>
+                <li class="px-2.5 py-1 text-xs rounded bg-[#0d162b] border border-slate-800 text-slate-300 font-medium">JavaScript</li>
+              </ul>
+              <a class="px-3.5 py-1.5 rounded-lg bg-[#0b1325] border border-slate-700/80 hover:border-slate-500 text-white text-xs font-semibold flex items-center gap-1 transition-colors focus-visible:rounded" href="#projects" aria-label="Visit Airline Booking System Prototype">
+                <span>Visit</span>
+                <span class="text-sm leading-none" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
         </div>
-<p class="text-sm text-slate-400 mt-4 max-w-2xl font-light">
+      </div>
+    </section>
+    <!-- END: ProjectsSection -->
+
+    <!-- BEGIN: ToolsSection -->
+    <section class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-900/60" data-purpose="tools-tech-stack" id="tools" aria-labelledby="tools-section-title">
+      <!-- Section Header Pill & Subtitle -->
+      <div class="flex flex-col items-center text-center mb-16">
+        <h2 id="tools-section-title" class="px-7 py-2 rounded-full bg-[#0a1222] border border-[#1b2b48] text-white font-bold text-lg tracking-wide shadow-inner">
+          Tools
+        </h2>
+        <p class="text-sm text-slate-400 mt-4 max-w-2xl font-light">
           Tools I use to develop web applications
         </p>
-</div>
-<!-- Categories Columns Layout -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
-<!-- Column 1: Frontend -->
-<div>
-<h3 class="text-2xl font-bold text-center text-white mb-8 tracking-tight">Frontend</h3>
-<div class="grid grid-cols-2 gap-4">
-<!-- HTML -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-orange-600/20 text-orange-500 mb-3 font-bold text-lg">
-<span class="px-2 py-0.5 rounded bg-orange-600 text-white font-black text-xs">5</span>
-</div>
-<h4 class="font-bold text-white text-base">HTML</h4>
-<span class="text-xs text-slate-400 mt-1">Language</span>
-</div>
-<!-- CSS -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-blue-600/20 text-blue-400 mb-3 font-bold text-lg">
-<span class="px-2 py-0.5 rounded bg-blue-500 text-white font-black text-xs">3</span>
-</div>
-<h4 class="font-bold text-white text-base">CSS</h4>
-<span class="text-xs text-slate-400 mt-1">Language</span>
-</div>
-<!-- Bootstrap -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-purple-700/20 text-purple-400 mb-3 font-bold text-lg">
-<span class="px-2 py-0.5 rounded bg-purple-700 text-white font-black text-xs">B</span>
-</div>
-<h4 class="font-bold text-white text-base">Bootstrap</h4>
-<span class="text-xs text-slate-400 mt-1">Framework</span>
-</div>
-<!-- JavaScript -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-amber-500/20 text-amber-400 mb-3 font-bold text-lg">
-<span class="px-1.5 py-0.5 rounded bg-amber-400 text-black font-black text-xs">JS</span>
-</div>
-<h4 class="font-bold text-white text-base">JavaScript</h4>
-<span class="text-xs text-slate-400 mt-1">Language</span>
-</div>
-</div>
-</div>
-<!-- Column 2: MERN -->
-<div>
-<h3 class="text-2xl font-bold text-center text-white mb-8 tracking-tight">MERN</h3>
-<div class="grid grid-cols-2 gap-4">
-<!-- Mongo -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-emerald-700/20 text-emerald-500 mb-3 font-bold text-lg">
-<svg class="w-6 h-6 fill-emerald-500" viewbox="0 0 24 24"><path d="M12 2C11.5 5 8 9 8 13.5C8 17.5 10 21 12 22C14 21 16 17.5 16 13.5C16 9 12.5 5 12 2Z"></path></svg>
-</div>
-<h4 class="font-bold text-white text-base">Mongo</h4>
-<span class="text-xs text-slate-400 mt-1">Database</span>
-</div>
-<!-- Express -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-slate-800 text-slate-300 mb-3 font-medium text-sm">
-<span class="font-mono text-xs">ex</span>
-</div>
-<h4 class="font-bold text-white text-base">Express</h4>
-<span class="text-xs text-slate-400 mt-1">Backend API</span>
-</div>
-<!-- React -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-cyan-600/20 text-cyan-400 mb-3 font-bold text-lg">
-<svg class="w-6 h-6 stroke-cyan-400 fill-none" stroke-width="1.8" viewbox="0 0 24 24">
-<ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(30 12 12)"></ellipse>
-<ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(90 12 12)"></ellipse>
-<ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(150 12 12)"></ellipse>
-<circle cx="12" cy="12" fill="currentColor" r="1.5"></circle>
-</svg>
-</div>
-<h4 class="font-bold text-white text-base">React</h4>
-<span class="text-xs text-slate-400 mt-1">Frontend UI</span>
-</div>
-<!-- Node.js -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-emerald-600/20 text-emerald-400 mb-3 font-bold text-lg">
-<svg class="w-6 h-6 fill-emerald-500" viewbox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L18.8 8 12 11.8 5.2 8 12 4.2zM5 8.9l6 3.4v6.8l-6-3.3V8.9zm8 10.2v-6.8l6-3.4v6.9l-6 3.3z"></path></svg>
-</div>
-<h4 class="font-bold text-white text-base">Node.js</h4>
-<span class="text-xs text-slate-400 mt-1">Runtime</span>
-</div>
-</div>
-</div>
-<!-- Column 3: Other Tools -->
-<div>
-<h3 class="text-2xl font-bold text-center text-white mb-8 tracking-tight">Other Tools</h3>
-<div class="grid grid-cols-2 gap-4">
-<!-- VSCode -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-sky-600/20 text-sky-400 mb-3 font-bold text-lg">
-<svg class="w-6 h-6 fill-sky-400" viewbox="0 0 24 24"><path d="M17.5 2.5L7.5 11l-4-3.5L1 9.5l4 3.5-4 3.5 2.5 2 4-3.5 10 8.5L23 21.5V3.5L17.5 2.5zm.5 15.5l-6-5 6-5v10z"></path></svg>
-</div>
-<h4 class="font-bold text-white text-base">VSCode</h4>
-<span class="text-xs text-slate-400 mt-1">IDE</span>
-</div>
-<!-- Git -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-rose-600/20 text-rose-500 mb-3 font-bold text-lg">
-<svg class="w-6 h-6 fill-rose-500" viewbox="0 0 24 24"><path d="M19.5 9.5l-5-5a1.4 1.4 0 0 0-2 0l-1.6 1.6 2.5 2.5a1.8 1.8 0 0 1 2.3 2.3l2.4 2.4a1.8 1.8 0 1 1-1.3 1.3l-2.4-2.4a1.8 1.8 0 0 1-2.2-.4L9.8 14v4.3a1.8 1.8 0 1 1-1.8 0V13a1.8 1.8 0 0 1 .9-1.6l2.3-2.3L4.5 2.4a1.4 1.4 0 0 0-2 0l-5 5a1.4 1.4 0 0 0 0 2l12 12a1.4 1.4 0 0 0 2 0l8-8a1.4 1.4 0 0 0 0-2z"></path></svg>
-</div>
-<h4 class="font-bold text-white text-base">Git</h4>
-<span class="text-xs text-slate-400 mt-1">Language</span>
-</div>
-<!-- Postman -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-orange-600/20 text-orange-400 mb-3 font-bold text-lg">
-<span class="w-6 h-6 rounded-full bg-white text-orange-600 font-bold flex items-center justify-center text-xs">P</span>
-</div>
-<h4 class="font-bold text-white text-base">Postman</h4>
-<span class="text-xs text-slate-400 mt-1">API Tester</span>
-</div>
-<!-- Sublime -->
-<div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
-<div class="icon-box bg-amber-600/20 text-amber-500 mb-3 font-bold text-lg">
-<span class="px-2 py-0.5 rounded bg-orange-500 text-white font-black text-xs">S</span>
-</div>
-<h4 class="font-bold text-white text-base">Sublime</h4>
-<span class="text-xs text-slate-400 mt-1">IDE</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- END: ToolsSection -->
-<!-- BEGIN: ContactSection -->
-<section class="py-24 px-6 max-w-4xl mx-auto border-t border-slate-900/60" data-purpose="contact-form-section" id="contact">
-<!-- Section Header Pill & Subtitle -->
-<div class="flex flex-col items-center text-center mb-14">
-<div class="px-7 py-2 rounded-full bg-[#0a1222] border border-[#1b2b48] text-white font-bold text-lg tracking-wide shadow-inner">
-          Contact
+      </div>
+
+      <!-- Categories Columns Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
+        <!-- Column 1: Frontend -->
+        <div role="region" aria-labelledby="tools-frontend-heading">
+          <h3 id="tools-frontend-heading" class="text-2xl font-bold text-center text-white mb-8 tracking-tight">Frontend</h3>
+          <ul class="grid grid-cols-2 gap-4 list-none p-0 m-0">
+            <!-- HTML -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-orange-600/20 text-orange-500 mb-3 font-bold text-lg" aria-hidden="true">
+                  <span class="px-2 py-0.5 rounded bg-orange-600 text-white font-black text-xs">5</span>
+                </div>
+                <h4 class="font-bold text-white text-base">HTML</h4>
+                <span class="text-xs text-slate-400 mt-1">Language</span>
+              </div>
+            </li>
+            <!-- CSS -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-blue-600/20 text-blue-400 mb-3 font-bold text-lg" aria-hidden="true">
+                  <span class="px-2 py-0.5 rounded bg-blue-500 text-white font-black text-xs">3</span>
+                </div>
+                <h4 class="font-bold text-white text-base">CSS</h4>
+                <span class="text-xs text-slate-400 mt-1">Language</span>
+              </div>
+            </li>
+            <!-- Bootstrap -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-purple-700/20 text-purple-400 mb-3 font-bold text-lg" aria-hidden="true">
+                  <span class="px-2 py-0.5 rounded bg-purple-700 text-white font-black text-xs">B</span>
+                </div>
+                <h4 class="font-bold text-white text-base">Bootstrap</h4>
+                <span class="text-xs text-slate-400 mt-1">Framework</span>
+              </div>
+            </li>
+            <!-- JavaScript -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-amber-500/20 text-amber-400 mb-3 font-bold text-lg" aria-hidden="true">
+                  <span class="px-1.5 py-0.5 rounded bg-amber-400 text-black font-black text-xs">JS</span>
+                </div>
+                <h4 class="font-bold text-white text-base">JavaScript</h4>
+                <span class="text-xs text-slate-400 mt-1">Language</span>
+              </div>
+            </li>
+          </ul>
         </div>
-<p class="text-sm text-slate-400 mt-4 max-w-xl font-light">
+
+        <!-- Column 2: MERN -->
+        <div role="region" aria-labelledby="tools-mern-heading">
+          <h3 id="tools-mern-heading" class="text-2xl font-bold text-center text-white mb-8 tracking-tight">MERN</h3>
+          <ul class="grid grid-cols-2 gap-4 list-none p-0 m-0">
+            <!-- Mongo -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-emerald-700/20 text-emerald-500 mb-3 font-bold text-lg" aria-hidden="true">
+                  <svg class="w-6 h-6 fill-emerald-500" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 2C11.5 5 8 9 8 13.5C8 17.5 10 21 12 22C14 21 16 17.5 16 13.5C16 9 12.5 5 12 2Z"></path></svg>
+                </div>
+                <h4 class="font-bold text-white text-base">Mongo</h4>
+                <span class="text-xs text-slate-400 mt-1">Database</span>
+              </div>
+            </li>
+            <!-- Express -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-slate-800 text-slate-300 mb-3 font-medium text-sm" aria-hidden="true">
+                  <span class="font-mono text-xs">ex</span>
+                </div>
+                <h4 class="font-bold text-white text-base">Express</h4>
+                <span class="text-xs text-slate-400 mt-1">Backend API</span>
+              </div>
+            </li>
+            <!-- React -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-cyan-600/20 text-cyan-400 mb-3 font-bold text-lg" aria-hidden="true">
+                  <svg class="w-6 h-6 stroke-cyan-400 fill-none" stroke-width="1.8" viewBox="0 0 24 24" role="img" aria-hidden="true">
+                    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(30 12 12)"></ellipse>
+                    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(90 12 12)"></ellipse>
+                    <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(150 12 12)"></ellipse>
+                    <circle cx="12" cy="12" fill="currentColor" r="1.5"></circle>
+                  </svg>
+                </div>
+                <h4 class="font-bold text-white text-base">React</h4>
+                <span class="text-xs text-slate-400 mt-1">Frontend UI</span>
+              </div>
+            </li>
+            <!-- Node.js -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-emerald-600/20 text-emerald-400 mb-3 font-bold text-lg" aria-hidden="true">
+                  <svg class="w-6 h-6 fill-emerald-500" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L18.8 8 12 11.8 5.2 8 12 4.2zM5 8.9l6 3.4v6.8l-6-3.3V8.9zm8 10.2v-6.8l6-3.4v6.9l-6 3.3z"></path></svg>
+                </div>
+                <h4 class="font-bold text-white text-base">Node.js</h4>
+                <span class="text-xs text-slate-400 mt-1">Runtime</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Other Tools -->
+        <div role="region" aria-labelledby="tools-other-heading">
+          <h3 id="tools-other-heading" class="text-2xl font-bold text-center text-white mb-8 tracking-tight">Other Tools</h3>
+          <ul class="grid grid-cols-2 gap-4 list-none p-0 m-0">
+            <!-- VSCode -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-sky-600/20 text-sky-400 mb-3 font-bold text-lg" aria-hidden="true">
+                  <svg class="w-6 h-6 fill-sky-400" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M17.5 2.5L7.5 11l-4-3.5L1 9.5l4 3.5-4 3.5 2.5 2 4-3.5 10 8.5L23 21.5V3.5L17.5 2.5zm.5 15.5l-6-5 6-5v10z"></path></svg>
+                </div>
+                <h4 class="font-bold text-white text-base">VSCode</h4>
+                <span class="text-xs text-slate-400 mt-1">IDE</span>
+              </div>
+            </li>
+            <!-- Git -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-rose-600/20 text-rose-500 mb-3 font-bold text-lg" aria-hidden="true">
+                  <svg class="w-6 h-6 fill-rose-500" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M19.5 9.5l-5-5a1.4 1.4 0 0 0-2 0l-1.6 1.6 2.5 2.5a1.8 1.8 0 0 1 2.3 2.3l2.4 2.4a1.8 1.8 0 1 1-1.3 1.3l-2.4-2.4a1.8 1.8 0 0 1-2.2-.4L9.8 14v4.3a1.8 1.8 0 1 1-1.8 0V13a1.8 1.8 0 0 1 .9-1.6l2.3-2.3L4.5 2.4a1.4 1.4 0 0 0-2 0l-5 5a1.4 1.4 0 0 0 0 2l12 12a1.4 1.4 0 0 0 2 0l8-8a1.4 1.4 0 0 0 0-2z"></path></svg>
+                </div>
+                <h4 class="font-bold text-white text-base">Git</h4>
+                <span class="text-xs text-slate-400 mt-1">Language</span>
+              </div>
+            </li>
+            <!-- Postman -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-orange-600/20 text-orange-400 mb-3 font-bold text-lg" aria-hidden="true">
+                  <span class="w-6 h-6 rounded-full bg-white text-orange-600 font-bold flex items-center justify-center text-xs">P</span>
+                </div>
+                <h4 class="font-bold text-white text-base">Postman</h4>
+                <span class="text-xs text-slate-400 mt-1">API Tester</span>
+              </div>
+            </li>
+            <!-- Sublime -->
+            <li>
+              <div class="card-glass rounded-2xl p-5 flex flex-col items-center text-center hover:scale-102 transition-transform">
+                <div class="icon-box bg-amber-600/20 text-amber-500 mb-3 font-bold text-lg" aria-hidden="true">
+                  <span class="px-2 py-0.5 rounded bg-orange-500 text-white font-black text-xs">S</span>
+                </div>
+                <h4 class="font-bold text-white text-base">Sublime</h4>
+                <span class="text-xs text-slate-400 mt-1">IDE</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- END: ToolsSection -->
+
+    <!-- BEGIN: ContactSection -->
+    <section class="py-24 px-6 max-w-4xl mx-auto border-t border-slate-900/60" data-purpose="contact-form-section" id="contact" aria-labelledby="contact-section-title">
+      <!-- Section Header Pill & Subtitle -->
+      <div class="flex flex-col items-center text-center mb-14">
+        <h2 id="contact-section-title" class="px-7 py-2 rounded-full bg-[#0a1222] border border-[#1b2b48] text-white font-bold text-lg tracking-wide shadow-inner">
+          Contact
+        </h2>
+        <p class="text-sm text-slate-400 mt-4 max-w-xl font-light">
           Want to connect and talk? Fill up the form to send me a message!
         </p>
-</div>
-<!-- Contact Form -->
-<form class="space-y-6" id="portfolio-contact-form" onsubmit="event.preventDefault(); alert('Message successfully sent to Jovie Cleofas!');">
-<!-- Name Field -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-slate-200" for="contact-name">Name</label>
-<input class="w-full px-4 py-3.5 rounded-lg bg-white text-slate-900 placeholder:text-slate-400 text-sm font-medium border-0 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition shadow-sm" id="contact-name" name="name" placeholder="John Doe" required="" type="text"/>
-</div>
-<!-- Email Address Field -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-slate-200" for="contact-email">Email Address</label>
-<input class="w-full px-4 py-3.5 rounded-lg bg-white text-slate-900 placeholder:text-slate-400 text-sm font-medium border-0 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition shadow-sm" id="contact-email" name="email" placeholder="john.doe@email.com" required="" type="email"/>
-</div>
-<!-- Message Field -->
-<div class="space-y-2">
-<label class="block text-sm font-bold text-slate-200" for="contact-message">Message</label>
-<textarea class="w-full p-4 rounded-lg bg-white text-slate-900 placeholder:text-slate-400 text-sm font-medium border-0 focus:ring-2 focus:ring-indigo-500 focus:outline-none resize-none transition shadow-sm" id="contact-message" name="message" required="" rows="8"></textarea>
-</div>
-<!-- Submit Button aligned to right -->
-<div class="flex justify-end pt-2">
-<button class="btn-glow px-8 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs tracking-wider uppercase transition-colors" type="submit">
+      </div>
+
+      <!-- Contact Form -->
+      <form class="space-y-6" id="portfolio-contact-form" onsubmit="event.preventDefault(); alert('Message successfully sent to Jovie Cleofas!');" aria-label="Contact Jovie Cleofas form" novalidate>
+        <!-- Name Field -->
+        <div class="space-y-2">
+          <label class="block text-sm font-bold text-slate-200" for="contact-name">
+            Name <span class="text-indigo-400" aria-hidden="true">*</span>
+            <span class="sr-only">(required)</span>
+          </label>
+          <input 
+            class="w-full px-4 py-3.5 rounded-lg bg-white text-slate-900 placeholder:text-slate-400 text-sm font-medium border-0 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition shadow-sm" 
+            id="contact-name" 
+            name="name" 
+            placeholder="John Doe" 
+            required 
+            aria-required="true"
+            autocomplete="name"
+            type="text"/>
+        </div>
+
+        <!-- Email Address Field -->
+        <div class="space-y-2">
+          <label class="block text-sm font-bold text-slate-200" for="contact-email">
+            Email Address <span class="text-indigo-400" aria-hidden="true">*</span>
+            <span class="sr-only">(required)</span>
+          </label>
+          <input 
+            class="w-full px-4 py-3.5 rounded-lg bg-white text-slate-900 placeholder:text-slate-400 text-sm font-medium border-0 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition shadow-sm" 
+            id="contact-email" 
+            name="email" 
+            placeholder="john.doe@email.com" 
+            required 
+            aria-required="true"
+            autocomplete="email"
+            type="email"/>
+        </div>
+
+        <!-- Message Field -->
+        <div class="space-y-2">
+          <label class="block text-sm font-bold text-slate-200" for="contact-message">
+            Message <span class="text-indigo-400" aria-hidden="true">*</span>
+            <span class="sr-only">(required)</span>
+          </label>
+          <textarea 
+            class="w-full p-4 rounded-lg bg-white text-slate-900 placeholder:text-slate-400 text-sm font-medium border-0 focus:ring-2 focus:ring-indigo-500 focus:outline-none resize-none transition shadow-sm" 
+            id="contact-message" 
+            name="message" 
+            required 
+            aria-required="true"
+            rows="8"
+            placeholder="Write your message here..."></textarea>
+        </div>
+
+        <!-- Submit Button aligned to right -->
+        <div class="flex justify-end pt-2">
+          <button class="btn-glow px-8 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs tracking-wider uppercase transition-colors focus-visible:rounded" type="submit" aria-label="Submit message to Jovie Cleofas">
             SUBMIT
           </button>
-</div>
-</form>
-</section>
-<!-- END: ContactSection -->
-</main>
-<!-- BEGIN: Footer -->
-<footer class="w-full border-t border-slate-900/90 py-10 px-6 bg-[#02050f]" data-purpose="site-footer">
-<div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-normal text-slate-300">
-<!-- Copyright message -->
-<div class="tracking-wide">
+        </div>
+      </form>
+    </section>
+    <!-- END: ContactSection -->
+  </main>
+
+  <!-- BEGIN: Footer -->
+  <footer class="w-full border-t border-slate-900/90 py-10 px-6 bg-[#02050f]" data-purpose="site-footer" role="contentinfo">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-normal text-slate-300">
+      <!-- Copyright message -->
+      <div class="tracking-wide">
         © 2026 Jovie Cleofas. All rights reserved.
       </div>
-<!-- Social & external profiles -->
-<div class="flex items-center space-x-8">
-<a class="hover:text-white transition-colors" href="https://github.com" rel="noopener noreferrer" target="_blank">GitHub</a>
-<a class="hover:text-white transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-</div>
-</div>
-</footer>
-<!-- END: Footer -->
-</body></html>
+      <!-- Social & external profiles -->
+      <nav class="flex items-center space-x-8" aria-label="Social media profiles">
+        <a class="hover:text-white transition-colors focus-visible:rounded" href="https://github.com" rel="noopener noreferrer" target="_blank" aria-label="Jovie Cleofas on GitHub (opens in a new tab)">
+          GitHub <span class="sr-only">(opens in new window)</span>
+        </a>
+        <a class="hover:text-white transition-colors focus-visible:rounded" href="https://linkedin.com" rel="noopener noreferrer" target="_blank" aria-label="Jovie Cleofas on LinkedIn (opens in a new tab)">
+          LinkedIn <span class="sr-only">(opens in new window)</span>
+        </a>
+      </nav>
+    </div>
+  </footer>
+  <!-- END: Footer -->
+</body>
+</html>
